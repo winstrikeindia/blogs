@@ -29,17 +29,14 @@
         
         /* New custom styling for the graphic area to mimic the yellow ring and central focus */
         .graphic-area {
-            position: relative;
-            /* Using a radial gradient to mimic the large yellow circle in the background image */
-            /* Adjusted the inner circle color to match the new background */
-            background: radial-gradient(circle at center, #FBBF24 50%, #751414 75%);
+            /* **FIXED:** Removed height and radial-gradient for simpler, non-absolute layout on desktop. */
+            /* Using padding/margin instead of fixed height for vertical centering. */
             width: 100%;
-            height: 450px; /* Fixed height for visual consistency */
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Hide gradient overflow */
         }
+        
         /* Ensure the stats block remains red for the right column */
         .stat-block {
             background-color: #991B1B;
@@ -48,7 +45,6 @@
         /* Adjust image size for mobile */
         @media (max-width: 1024px) {
             .graphic-area {
-                height: 300px; /* Shorter on mobile */
                 background: none; /* Hide large gradient on small screens to focus on content */
             }
         }
@@ -66,7 +62,6 @@
         /* Step Card Styling */
         .step-card {
             background-color: #991B1B; /* Red-800 for the cards */
-            /* Removed min-height here to allow clean stacking on mobile */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -109,14 +104,17 @@
             </div>
 
             <!-- Center: Image Area (Order: 2nd on mobile) -->
-            <div class="w-full lg:w-auto relative flex justify-center lg:justify-start mt-8 lg:mt-0 order-2 lg:order-2">
+            <!-- Changed lg:w-auto to lg:w-2/5 to ensure enough space for the image on desktop -->
+            <div class="w-full lg:w-2/5 relative flex justify-center lg:justify-start mt-8 lg:mt-0 order-2 lg:order-2">
                 <div class="graphic-area">
-                    <!-- Adjusted image class for better sizing on various screens -->
-                    <img src="https://i.ibb.co/fYzcB9Mq/Frame-1686575948.png" alt="Winstrike App Promotional Graphic" class="max-w-full w-64 sm:w-80 md:w-96 lg:max-w-xl h-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <!-- **FIXED:** Removed absolute positioning classes from the image. -->
+                    <img src="https://i.ibb.co/fYzcB9Mq/Frame-1686575948.png" alt="Winstrike App Promotional Graphic" class="max-w-full w-64 sm:w-80 md:w-96 lg:max-w-full h-auto">
                 </div>
             </div>
 
-            <!-- Right Side: Stats Block (Order: 3rd on mobile) --><div class="w-full lg:w-1/5 mt-12 lg:mt-0 order-3 lg:order-3">
+            <!-- Right Side: Stats Block (Order: 3rd on mobile) -->
+            <!-- Adjusted width to lg:w-1/5 so the total width is approx 1/2 + 2/5 + 1/5 > 100% -->
+            <div class="w-full lg:w-1/5 mt-12 lg:mt-0 order-3 lg:order-3">
                 <div class="stat-block p-6 rounded-xl shadow-2xl w-full max-w-sm mx-auto lg:max-w-none">
                     <div class="text-center space-y-6">
                         
