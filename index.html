@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winstrike - Fly High With Aviator</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font for striking headlines -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <!-- Favicon Link --><link rel="icon" type="image/png" href="https://i.ibb.co/JR9QyMP5/Frame-1686575944.png">
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font for striking headlines --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -17,12 +16,7 @@
             background-color: #7F1D1D; /* Deep Red-Maroon (Tailwind Red-900) */
             background-image: linear-gradient(to bottom, #7F1D1D, #991B1B);
         }
-        /* Styling for the circular graphic placeholder */
-        .graphic-circle {
-            /* Yellow/Gold circle to mimic the contrast of the original image */
-            background-color: #FBBF24; /* Yellow-500 */
-            border: 4px solid #F59E0B; /* Amber-500 border */
-        }
+        /* The custom styling for graphic-circle and stat-block is kept in case they are needed for other elements or similar design patterns */
         .stat-block {
             /* Slightly darker red/maroon for the stats block to stand out */
             background-color: #991B1B; /* Red-800 */
@@ -31,35 +25,28 @@
 </head>
 <body class="min-h-screen">
 
-    <!-- 1. Header (Dark bar across the top) -->
-    <header class="bg-red-900 border-b border-red-800 shadow-xl">
+    <!-- 1. Header (Dark bar across the top) --><header class="bg-red-900 border-b border-red-800 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             
-            <!-- Logo (WINSTRIKE - Faking the logo look with bold text) -->
-            <div class="flex items-center space-x-2">
-                <span class="text-3xl font-extrabold text-white tracking-widest">WINSTRIKE</span>
+            <!-- Logo --><div class="flex items-center">
+                <img src="https://d1gvwx1uptx1i3.cloudfront.net/khelocdn/public/assets/general_setting/winstrike/logo.png" alt="Winstrike Logo" class="h-10 sm:h-12 max-w-full">
             </div>
 
-            <!-- Action Buttons -->
-            <div class="flex space-x-3">
-                <!-- Sign Up Button (Primary CTA - High contrast Yellow) -->
-                <a href="#" class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg text-lg">
+            <!-- Action Buttons --><div class="flex space-x-3">
+                <!-- Sign Up Button (Primary CTA - High contrast Yellow) --><a href="#" class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg text-lg">
                     Sign Up
                 </a>
-                <!-- Login Button (Secondary CTA - Red) -->
-                <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg text-lg border border-red-500">
+                <!-- Login Button (Secondary CTA - Red) --><a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg text-lg border border-red-500">
                     Login
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- 2. Hero Section (Replicating the main promotional area) -->
-    <section class="hero-bg text-white py-16 md:py-24 lg:py-32">
+    <!-- 2. Hero Section (Replicating the main promotional area) --><section class="hero-bg text-white py-16 md:py-24 lg:py-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start justify-between">
             
-            <!-- Left Side: Headline Text -->
-            <div class="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left">
+            <!-- Left Side: Headline Text --><div class="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left">
                 <h2 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-tight mt-10">
                     Fly high <br>With <span class="text-yellow-400">Aviator</span> <br>On <span class="text-yellow-400">Winstrike</span>
                 </h2>
@@ -68,26 +55,11 @@
                 </p>
             </div>
 
-            <!-- Center: Image Placeholder (Recreating the striking graphic element) -->
-            <div class="w-full lg:w-auto relative flex justify-center lg:justify-start">
-                
-                <!-- Large yellow circle base -->
-                <div class="graphic-circle w-72 h-72 sm:w-80 sm:h-80 rounded-full flex items-center justify-center transform scale-100 shadow-2xl shadow-yellow-700/50">
-                    <div class="text-center">
-                        <!-- Placeholder for the game multiplier value -->
-                        <p class="text-5xl font-extrabold text-red-800 leading-none">2.18x</p>
-                        <p class="text-xl font-semibold text-red-700 mt-1">MAX WIN</p>
-                    </div>
-                </div>
-
-                <!-- Placeholder for the airplane graphic (using an emoji/icon) -->
-                <div class="absolute top-[-40px] left-1/2 transform -translate-x-1/2 bg-red-600 p-3 rounded-full shadow-xl shadow-red-500/50">
-                    <span class="text-4xl" role="img" aria-label="airplane">✈️</span>
-                </div>
+            <!-- Center: Image --><div class="w-full lg:w-auto relative flex justify-center lg:justify-start mt-8 lg:mt-0">
+                <img src="https://i.ibb.co/Ps3GPRy7/Frame-1686575946.png" alt="Aviator Game Interface" class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto rounded-lg shadow-2xl shadow-yellow-700/50">
             </div>
 
-            <!-- Right Side: Stats Block -->
-            <div class="w-full lg:w-1/5 mt-12 lg:mt-0">
+            <!-- Right Side: Stats Block --><div class="w-full lg:w-1/5 mt-12 lg:mt-0">
                 <div class="stat-block p-6 rounded-xl shadow-2xl">
                     <div class="text-center space-y-6">
                         
@@ -97,8 +69,7 @@
                         </div>
 
                         <div class="border-b border-red-700 pb-4">
-                            <!-- Use large number for impact -->
-                            <p class="text-4xl font-extrabold text-white">2,97,172</p>
+                            <!-- Use large number for impact --><p class="text-4xl font-extrabold text-white">2,97,172</p>
                             <p class="text-lg font-medium text-red-200">Active Players</p>
                         </div>
                         
@@ -113,8 +84,7 @@
         </div>
     </section>
 
-    <!-- 3. Footer (Simple Placeholder) -->
-    <footer class="bg-gray-900 text-white py-6">
+    <!-- 3. Footer (Simple Placeholder) --><footer class="bg-gray-900 text-white py-6">
         <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
             &copy; 2025 Winstrike. All rights reserved. Play Responsibly.
         </div>
