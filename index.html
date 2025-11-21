@@ -5,27 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winstrike - Fly High With Aviator</title>
     <!-- Favicon Link --><link rel="icon" type="image/png" href="https://i.ibb.co/JR9QyMP5/Frame-1686575944.png">
+    <!-- Google Site Verification for GSC (New) --><meta name="google-site-verification" content="tSSkaBBudgdT1TuNuTaLiT0GjAMFCGxI_LdTNU7m--8" />
     <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
     <!-- Font for striking headlines --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom deep red background for the hero section */
+        /* Refined background for the hero section, made darker as requested */
         .hero-bg {
-            background-color: #7F1D1D; /* Deep Red-Maroon (Tailwind Red-900) */
-            background-image: linear-gradient(to bottom, #7F1D1D, #991B1B);
+            background-color: #751414; /* Deep Maroon/Crimson */
         }
-        /* The custom styling for graphic-circle and stat-block is kept in case they are needed for other elements or similar design patterns */
+        
+        /* Custom black background for the header (#111111) */
+        .header-bg {
+            background-color: #111111;
+        }
+        
+        /* The custom styling for the stats block */
         .stat-block {
-            /* Slightly darker red/maroon for the stats block to stand out */
-            background-color: #991B1B; /* Red-800 */
+            background-color: #991B1B; /* Red-800, providing contrast against the darker hero-bg */
+        }
+        
+        /* New custom styling for the graphic area to mimic the yellow ring and central focus */
+        .graphic-area {
+            position: relative;
+            /* Using a radial gradient to mimic the large yellow circle in the background image */
+            /* Adjusted the inner circle color to match the new background */
+            background: radial-gradient(circle at center, #FBBF24 50%, #751414 75%);
+            width: 100%;
+            height: 450px; /* Fixed height for visual consistency */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide gradient overflow */
+        }
+        /* Ensure the stats block remains red for the right column */
+        .stat-block {
+            background-color: #991B1B;
+        }
+
+        /* Adjust image size for mobile */
+        @media (max-width: 1024px) {
+            .graphic-area {
+                height: 300px; /* Shorter on mobile */
+                background: none; /* Hide large gradient on small screens to focus on content */
+            }
+        }
+
+        /* Custom style for the feature section background to provide separation from the hero/about sections */
+        .feature-bg {
+            background-color: #111111; /* Black background for contrast */
+        }
+
+        /* Custom icon colors (using bright yellow for visibility) */
+        .icon-yellow {
+            color: #FBBF24;
+        }
+        
+        /* Step Card Styling */
+        .step-card {
+            background-color: #991B1B; /* Red-800 for the cards */
+            /* Removed min-height here to allow clean stacking on mobile */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <!-- 1. Header (Dark bar across the top) --><header class="bg-red-900 border-b border-red-800 shadow-xl">
+    <!-- 1. Header (Custom Black bar across the top) -->
+    <header class="header-bg border-b border-gray-800 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             
             <!-- Logo --><div class="flex items-center">
@@ -43,10 +94,12 @@
         </div>
     </header>
 
-    <!-- 2. Hero Section (Replicating the main promotional area) --><section class="hero-bg text-white py-16 md:py-24 lg:py-32">
+    <!-- 2. Hero Section (Replicating the main promotional area) -->
+    <section class="hero-bg text-white py-16 md:py-24 lg:py-32">
+        <!-- Optimized for stacking on mobile -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start justify-between">
             
-            <!-- Left Side: Headline Text --><div class="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left">
+            <!-- Left Side: Headline Text (Order: 1st on mobile) --><div class="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left order-1">
                 <h2 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-tight mt-10">
                     Fly high <br>With <span class="text-yellow-400">Aviator</span> <br>On <span class="text-yellow-400">Winstrike</span>
                 </h2>
@@ -55,12 +108,16 @@
                 </p>
             </div>
 
-            <!-- Center: Image --><div class="w-full lg:w-auto relative flex justify-center lg:justify-start mt-8 lg:mt-0">
-                <img src="https://i.ibb.co/Ps3GPRy7/Frame-1686575946.png" alt="Aviator Game Interface" class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto rounded-lg shadow-2xl shadow-yellow-700/50">
+            <!-- Center: Image Area (Order: 2nd on mobile) -->
+            <div class="w-full lg:w-auto relative flex justify-center lg:justify-start mt-8 lg:mt-0 order-2 lg:order-2">
+                <div class="graphic-area">
+                    <!-- Adjusted image class for better sizing on various screens -->
+                    <img src="https://i.ibb.co/fYzcB9Mq/Frame-1686575948.png" alt="Winstrike App Promotional Graphic" class="max-w-full w-64 sm:w-80 md:w-96 lg:max-w-xl h-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                </div>
             </div>
 
-            <!-- Right Side: Stats Block --><div class="w-full lg:w-1/5 mt-12 lg:mt-0">
-                <div class="stat-block p-6 rounded-xl shadow-2xl">
+            <!-- Right Side: Stats Block (Order: 3rd on mobile) --><div class="w-full lg:w-1/5 mt-12 lg:mt-0 order-3 lg:order-3">
+                <div class="stat-block p-6 rounded-xl shadow-2xl w-full max-w-sm mx-auto lg:max-w-none">
                     <div class="text-center space-y-6">
                         
                         <div class="border-b border-red-700 pb-4">
@@ -84,9 +141,264 @@
         </div>
     </section>
 
-    <!-- 3. Footer (Simple Placeholder) --><footer class="bg-gray-900 text-white py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
-            &copy; 2025 Winstrike. All rights reserved. Play Responsibly.
+    <!-- 3. About Winstrike Section -->
+    <section class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Stacks columns on mobile (flex-col) and switches to row (lg:flex-row) on desktop -->
+            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
+
+                <!-- Left Column: Text and Features (Order: 1st on mobile) -->
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <h3 class="text-5xl font-black mb-4">About Winstrike</h3>
+                    <h4 class="text-3xl font-semibold mb-8 text-yellow-400">
+                        Top-class gaming experience for Aviator enthusiasts
+                    </h4>
+                    <p class="text-xl text-red-100 mb-8">
+                        At Winstrike, we believe in the smooth and seamless online gaming experience. Our platform is crafted for online gamers looking for top-notch crash games that demand speed and strategy. Playing Aviator on Winstrike is an adrenaline-pumping experience that comes with real fun and massive real-time rewards.
+                    </p>
+
+                    <!-- Features Checklist (Uses grid-cols-2 for smaller mobile screens too) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 mb-10 text-xl font-medium">
+                        <div class="flex items-center space-x-3 text-white">
+                            <span class="text-yellow-400 text-2xl">✔</span>
+                            <span>Lightning-fast gameplay</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-white">
+                            <span class="text-yellow-400 text-2xl">✔</span>
+                            <span>Smooth user interface</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-white">
+                            <span class="text-yellow-400 text-2xl">✔</span>
+                            <span>Strategic moves</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-white">
+                            <span class="text-yellow-400 text-2xl">✔</span>
+                            <span>Real-time rewards</span>
+                        </div>
+                    </div>
+
+                    <!-- Contact Buttons (Switches to column on mobile, row on small screens) -->
+                    <div class="bg-red-800 p-6 rounded-xl shadow-xl flex flex-col sm:flex-row gap-6">
+                        <!-- Call Us -->
+                        <div class="flex-1">
+                            <p class="text-xl font-bold mb-1 text-white flex items-center">
+                                <span class="text-yellow-400 text-2xl mr-2">📞</span> Call Us
+                            </p>
+                            <a href="tel:18002024881" class="text-2xl font-black text-yellow-400 hover:text-yellow-300 transition-colors">
+                                1800-202-4881
+                            </a>
+                            <p class="text-sm text-red-200 mt-1">(Placeholder Number)</p>
+                        </div>
+                        <!-- Whatsapp -->
+                        <div class="flex-1">
+                            <p class="text-xl font-bold mb-1 text-white flex items-center">
+                                <span class="text-yellow-400 text-2xl mr-2">💬</span> Whatsapp
+                            </p>
+                            <a href="https://wa.me/919742541847" class="text-2xl font-black text-yellow-400 hover:text-yellow-300 transition-colors">
+                                +91 9742541847
+                            </a>
+                            <p class="text-sm text-red-200 mt-1">(Placeholder Number)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Image (Order: 2nd on mobile) -->
+                <div class="w-full lg:w-1/2 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0">
+                    <img src="https://d1gvwx1uptx1i3.cloudfront.net/khelocdn/public/assets/general_setting/winstrike/19_contactus.png" alt="Winstrike Representative" class="max-w-full h-auto rounded-lg shadow-2xl shadow-black/50">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Features/Value Proposition Section -->
+    <section class="feature-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-4xl sm:text-5xl font-black text-center mb-12 text-white">
+                What makes Winstrike the perfect platform for <span class="text-yellow-400">Aviator</span>
+            </h3>
+
+            <!-- 3x2 Feature Grid (Collapses to 1 column on mobile, 2 columns on tablet, 3 on desktop) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Feature 1: Free Spins & Bonuses (Yellow Card) -->
+                <div class="bg-yellow-500 text-gray-900 p-8 rounded-xl shadow-2xl transition hover:shadow-yellow-500/50">
+                    <div class="text-4xl mb-4 icon-yellow">🎁</div>
+                    <h4 class="text-2xl font-bold mb-2">Free spins & bonuses</h4>
+                    <p class="mb-6">Daily rewards, frequent offers & loyalty perks for Aviator players</p>
+                    <a href="#" class="inline-block bg-gray-900 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Get Bonuses Now</a>
+                </div>
+
+                <!-- Feature 2: Smart Game Insights (Dark Red Card) -->
+                <div class="bg-red-800 text-white p-8 rounded-xl shadow-2xl transition hover:shadow-red-500/50">
+                    <div class="text-4xl mb-4 icon-yellow">⚡</div>
+                    <h4 class="text-2xl font-bold mb-2">Smart game insights</h4>
+                    <p class="mb-6">Track patterns, analyze previous rounds, and make informed plays</p>
+                    <a href="#" class="inline-block bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-200">Learn More</a>
+                </div>
+
+                <!-- Feature 3: Instant Withdrawal (Gold Card) -->
+                <div class="bg-yellow-700 text-gray-900 p-8 rounded-xl shadow-2xl transition hover:shadow-yellow-800/50">
+                    <div class="text-4xl mb-4 icon-yellow">⚡</div>
+                    <h4 class="text-2xl font-bold mb-2">Instant withdrawal</h4>
+                    <p class="mb-6">Enjoy lightning-fast cashouts in just 2 minutes</p>
+                    <a href="#" class="inline-block bg-gray-900 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition duration-200">Withdraw Now</a>
+                </div>
+
+                <!-- Feature 4: 24/7 Customer Support (Deep Red Card) -->
+                <div class="bg-red-900 text-white p-8 rounded-xl shadow-2xl transition hover:shadow-red-700/50">
+                    <div class="text-4xl mb-4 icon-yellow">🎧</div>
+                    <h4 class="text-2xl font-bold mb-2">24/7 customer support</h4>
+                    <p class="mb-6">Real-time support via convenient channels, like chat and call</p>
+                    <a href="#" class="inline-block bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-200">Contact Support</a>
+                </div>
+
+                <!-- Feature 5: Secure Transaction Process (Dark Gray Card) -->
+                <div class="bg-gray-800 text-white p-8 rounded-xl shadow-2xl transition hover:shadow-gray-700/50">
+                    <div class="text-4xl mb-4 icon-yellow">🔒</div>
+                    <h4 class="text-2xl font-bold mb-2">Secure transaction process</h4>
+                    <p class="mb-6">Experience safe & secure deposit & withdrawal process</p>
+                    <a href="#" class="inline-block bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-200">Learn More</a>
+                </div>
+
+                <!-- Feature 6: Live Bets and History (Red Card) -->
+                <div class="bg-red-600 text-white p-8 rounded-xl shadow-2xl transition hover:shadow-red-400/50">
+                    <div class="text-4xl mb-4 icon-yellow">🕒</div>
+                    <h4 class="text-2xl font-bold mb-2">Live bets and cash-out history</h4>
+                    <p class="mb-6">View live bets and cash-out history to strategize your next move</p>
+                    <a href="#" class="inline-block bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-200">Learn More</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. How to Get Started Section (New Section) -->
+    <section class="hero-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-4xl sm:text-5xl font-black text-center mb-12 text-white">
+                How to get started on <span class="text-yellow-400">Winstrike?</span>
+            </h3>
+            
+            <!-- 3-Step Process Grid (Collapses to 1 column on mobile, 3 on desktop) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Step 1: Sign up -->
+                <div class="step-card p-8 rounded-xl shadow-2xl transition hover:shadow-black/50">
+                    <div>
+                        <h4 class="text-3xl font-black mb-4 flex items-center">
+                            Step 1 
+                            <span class="ml-3 text-xl font-medium text-yellow-400">→</span>
+                        </h4>
+                        <h5 class="text-4xl font-black mb-6 text-yellow-400">Sign up</h5>
+                        <ul class="list-disc ml-5 space-y-3 text-lg text-red-100">
+                            <li>Visit the official Winstrike website</li>
+                            <li>Click on the signup button</li>
+                            <li>Fill in the required details</li>
+                            <li>Create your account with a strong password</li>
+                            <li>Verify your email and phone number with OTP</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-block w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg mt-8 text-center hover:bg-yellow-400 transition duration-200">Play Now</a>
+                </div>
+                
+                <!-- Step 2: Deposit -->
+                <div class="step-card p-8 rounded-xl shadow-2xl transition hover:shadow-black/50">
+                    <div>
+                        <h4 class="text-3xl font-black mb-4 flex items-center">
+                            Step 2 
+                            <span class="ml-3 text-xl font-medium text-yellow-400">→</span>
+                        </h4>
+                        <h5 class="text-4xl font-black mb-6 text-yellow-400">Deposit</h5>
+                        <ul class="list-disc ml-5 space-y-3 text-lg text-red-100">
+                            <li>Log in to your Winstrike account</li>
+                            <li>Navigate to the deposit section</li>
+                            <li>Choose the payment method</li>
+                            <li>Enter the amount you want to deposit</li>
+                            <li>Confirm the payment</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-block w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg mt-8 text-center hover:bg-yellow-400 transition duration-200">Play Now</a>
+                </div>
+
+                <!-- Step 3: Withdrawal -->
+                <div class="step-card p-8 rounded-xl shadow-2xl transition hover:shadow-black/50">
+                    <div>
+                        <h4 class="text-3xl font-black mb-4 flex items-center">
+                            Step 3 
+                            <span class="ml-3 text-xl font-medium text-yellow-400">→</span>
+                        </h4>
+                        <h5 class="text-4xl font-black mb-6 text-yellow-400">Withdrawal</h5>
+                        <ul class="list-disc ml-5 space-y-3 text-lg text-red-100">
+                            <li>Log in to your Winstrike account</li>
+                            <li>Navigate to the Withdrawal section</li>
+                            <li>Enter the amount you want to withdraw</li>
+                            <li>Confirm the payment</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-block w-full bg-yellow-500 text-gray-900 font-bold py-3 px-6 rounded-lg mt-8 text-center hover:bg-yellow-400 transition duration-200">Play Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Full Footer Section -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Grid collapses columns on mobile and expands on desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-gray-700 pb-10 text-center sm:text-left">
+
+                <!-- Column 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex justify-center sm:justify-start"><img src="https://d1gvwx1uptx1i3.cloudfront.net/khelocdn/public/assets/general_setting/winstrike/logo.png" alt="Winstrike Logo" class="h-10 max-w-full mb-4"></div>
+                    <p class="text-sm text-gray-300">
+                        Play 1000+ sports games and 3000+ online games with 2+ lakhs users.
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Games -->
+                <div class="col-span-1">
+                    <h5 class="text-2xl font-black mb-4 text-white">Quick Games</h5>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Play Aviatrix</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Play Space XY</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Play F777 fighter</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Play Troll dice</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Navigation Links (Placeholder to maintain column layout) -->
+                <div class="col-span-1">
+                    <h5 class="text-2xl font-black mb-4 text-white">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Responsible Gaming</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Affiliates</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Community & Social -->
+                <div class="col-span-1">
+                    <h5 class="text-2xl font-black mb-4 text-white">Community</h5>
+                    <p class="text-sm text-gray-300 mb-4">Connect Now For Daily Offer's</p>
+                    
+                    <!-- Centering social icons on mobile -->
+                    <div class="flex justify-center sm:justify-start space-x-4 text-2xl text-white">
+                        <a href="#" class="hover:text-yellow-400 transition-colors" aria-label="Instagram">📸</a>
+                        <a href="#" class="hover:text-yellow-400 transition-colors" aria-label="Twitter">🐦</a>
+                        <a href="#" class="hover:text-yellow-400 transition-colors" aria-label="Pinterest">📌</a>
+                        <a href="#" class="hover:text-yellow-400 transition-colors" aria-label="Facebook">📘</a>
+                        <a href="#" class="hover:text-yellow-400 transition-colors" aria-label="YouTube">▶️</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright Row -->
+            <div class="text-center mt-6 text-sm text-gray-500">
+                &copy; 2025 Winstrike. All rights reserved. 
+                <a href="#" class="text-yellow-400 hover:text-yellow-300 transition-colors ml-2 font-semibold">Admin Login</a>
+            </div>
         </div>
     </footer>
 
