@@ -57,6 +57,87 @@
             background-color: #751414; /* Same as main BG for blending */
         }
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    // 1. WebPage Schema (Primary Type)
+    {
+      "@type": "WebPage",
+      "@id": "https://winstrikeindia.github.io/blogs/#webpage",
+      "url": "https://winstrikeindia.github.io/blogs/",
+      "name": "Winstrike - Fly High With Aviator",
+      "description": "Top-class gaming experience for Aviator enthusiasts. Winstrike offers lightning-fast gameplay, real-time rewards, and secure transactions.",
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://winstrikeindia.github.io/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "lastReviewed": "2025-11-28",
+      "datePublished": "2025-11-01",
+      "reviewedBy": {
+        "@type": "Organization",
+        "name": "Winstrike"
+      },
+      "mainEntity": [
+        { "@type": "FAQPage", "@id": "https://winstrikeindia.github.io/blogs/#faq" }
+      ]
+    },
+
+    // 2. Organization Schema
+    {
+      "@type": "Organization",
+      "name": "Winstrike",
+      "url": "https://winstrikeindia.github.io/",
+      "logo": "https://winstrikeindia.github.io/images/winstrike-logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "telephone": "+91-1800-103-4212",
+        "areaServed": "IN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/WinstrikeIndia",
+        "https://twitter.com/WinstrikeIndia"
+        // Add more social media links here
+      ]
+    },
+
+    // 3. FAQPage Schema (For "How to get started" steps)
+    {
+      "@type": "FAQPage",
+      "@id": "https://winstrikeindia.github.io/blogs/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I register on Winstrike?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To sign up, visit the official Winstrike website, click the signup button, fill in the required details, create a strong password, and verify your email and phone number with OTP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I deposit funds into my Winstrike account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Log in to your Winstrike account, navigate to the deposit section, choose your payment method, enter the desired amount, and confirm the payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I withdraw my winnings from Winstrike?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Log in to your Winstrike account, navigate to the Withdrawal section, enter the amount you wish to withdraw, and confirm the payment. Instant cashouts are typically processed in just 2 minutes."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body class="min-h-screen flex flex-col">
 
