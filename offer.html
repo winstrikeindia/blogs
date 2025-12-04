@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winstrike - Offers & Promotions</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Winstrike welcome bonus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Winstrike offers a 100% welcome bonus up to ₹1,00,000 for new players on their first deposit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to claim the Winstrike referral bonus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You receive ₹300 for each friend who registers on Winstrike and makes a minimum deposit of ₹1,000."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Winstrike give cashback?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Winstrike gives up to 10% weekly cashback on net losses credited every Monday."
+      }
+    }
+  ]
+}
+</script>
+
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/JR9QyMP5/Frame-1686575944.png">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font for striking headlines -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling when clicking tabs */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #751414; /* Deep Maroon/Crimson */
+        }
+        .header-bg {
+            background-color: #111111;
+        }
+        .main-content-bg {
+            background-color: #751414;
+        }
+        /* Tab Navigation Styling (Updated to Card Style) */
+        .promo-nav-item {
+            background-color: #991B1B; /* Red-800, matching detail cards */
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .promo-nav-item:hover {
+            border-color: #FBBF24; /* Yellow border on hover */
+            transform: scale(1.02); /* Slight scale on hover */
+        }
+        /* Active state for the vertical tab card */
+        .promo-nav-item.active {
+            border-color: #FBBF24; /* Yellow border on active */
+            background-color: #7f1d1d; /* Slightly darker when active */
+        }
+        
+        /* Detailed Card Styling */
+        .promo-detail-card {
+            background-color: #991B1B; /* Red-800 */
+            border: 1px solid #7f1d1d;
+            scroll-margin-top: 100px; /* Offset for sticky header if needed */
+        }
+
+        /* Marquee CSS */
+        .marquee-container {
+            background-color: #1a202c; 
+            height: 48px;
+            position: relative; 
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-scroll-area {
+            white-space: nowrap;
+            animation: scroll 30s linear infinite; 
+            min-width: 100%;
+            padding-left: 150px;
+        }
+        .recent-tag {
+            background-color: #2D3748; 
+            padding: 8px 16px;
+            font-weight: 700;
+            color: #FBBF24; 
+            flex-shrink: 0;
+            z-index: 10;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            border-radius: 0 5px 5px 0;
+        }
+        .winner-item {
+            display: inline-block;
+            margin-right: 2.5rem;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- 1. Header -->
+    <header class="header-bg border-b border-gray-800 shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://d1gvwx1uptx1i3.cloudfront.net/khelocdn/public/assets/general_setting/winstrike/logo.png" alt="Winstrike Logo" class="h-10 sm:h-12 max-w-full">
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="hidden sm:block text-white font-medium hover:text-yellow-400 transition-colors py-2 px-3 rounded-lg">Home</a>
+                <a href="registration.html" class="hidden sm:block text-white font-medium hover:text-yellow-400 transition-colors py-2 px-3 rounded-lg">How to Register?</a>
+                <a href="offers.html" class="hidden sm:block bg-red-600 text-white font-medium hover:bg-red-700 transition-colors py-2 px-3 rounded-lg shadow-md">Offers & Promotions</a>
+                <a href="https://winstrike.com/" class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg text-lg">Sign Up</a>
+                <a href="https://winstrike.com/" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 shadow-lg text-lg border border-red-500">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Section -->
+    <section class="marquee-container">
+        <div class="recent-tag">RECENT WINNERS</div>
+        <div class="marquee-scroll-area">
+            <div class="winner-items-group">
+                <span class="winner-item">🏆 $210 Adah N.</span>
+                <span class="winner-item">🏆 $565 Tanish S.</span>
+                <span class="winner-item">🏆 $909 Rushali S.</span>
+                <span class="winner-item">🏆 $89 Shubhangi B.</span>
+                <span class="winner-item">🏆 $591 Krisha K.</span>
+                <span class="winner-item">🏆 $905 Akshitha R.</span>
+                <span class="winner-item">🏆 $210 Adah N.</span>
+                <span class="winner-item">🏆 $565 Tanish S.</span>
+                <span class="winner-item">🏆 $909 Rushali S.</span>
+                <span class="winner-item">🏆 $89 Shubhangi B.</span>
+                <span class="winner-item">🏆 $591 Krisha K.</span>
+                <span class="winner-item">🏆 $905 Akshitha R.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow main-content-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Title -->
+            <header class="text-center mb-12">
+                <h1 class="text-5xl md:text-6xl font-black mb-4 leading-tight">
+                    Winstrike's Exclusive <span class="text-yellow-400">Offers and Promotions</span>
+                </h1>
+                <p class="text-xl text-red-200">
+                    Select a promotion below to view detailed terms and conditions.
+                </p>
+            </header>
+
+            <!-- Layout: Vertical Tabs (Left) + Content (Right/Below) -->
+            <div class="flex flex-col lg:flex-row gap-10">
+                
+                <!-- LEFT COLUMN: Vertical Navigation Tabs (Card Style) -->
+                <!-- FIX: Hidden on mobile (default flex-col) and only shown as a vertical menu on lg: screens -->
+                <nav id="promo-nav" class="w-full lg:w-1/3 flex flex-col gap-4 sticky top-24 self-start hidden lg:flex">
+                    
+                    <a href="#welcome-bonus" class="promo-nav-item p-5 rounded-lg flex items-center justify-between group active" onclick="setActiveTab(this)">
+                        <span class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">100% Welcome Bonus</span>
+                        <span class="text-yellow-400 text-2xl">→</span>
+                    </a>
+
+                    <a href="#referral-bonus" class="promo-nav-item p-5 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">₹300 Referral Bonus</span>
+                        <span class="text-yellow-400 text-2xl">→</span>
+                    </a>
+
+                    <a href="#losing-bonus" class="promo-nav-item p-5 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Losing Bonus</span>
+                        <span class="text-yellow-400 text-2xl">→</span>
+                    </a>
+
+                    <a href="#free-spins" class="promo-nav-item p-5 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">5 Free Spins</span>
+                        <span class="text-yellow-400 text-2xl">→</span>
+                    </a>
+
+                    <a href="#loyalty-store" class="promo-nav-item p-5 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Loyalty Points Store</span>
+                        <span class="text-yellow-400 text-2xl">→</span>
+                    </a>
+
+                    <a href="#birthday-bonus" class="promo-nav-item p-5 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">Birthday Bonus</span>
+                        <span class="text-yellow-400 text-2xl">→</span>
+                    </a>
+
+                </nav>
+                
+                <!-- MOBILE MENU (Simple stacked menu for small screens) -->
+                <nav class="w-full flex flex-col gap-4 lg:hidden mb-10">
+                     <h3 class="text-2xl font-bold text-white mb-2 border-b border-red-900 pb-2">All Promotions:</h3>
+                    <a href="#welcome-bonus" class="promo-nav-item p-3 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-lg font-semibold text-white">100% Welcome Bonus</span>
+                        <span class="text-yellow-400 text-xl">↓</span>
+                    </a>
+                    <a href="#referral-bonus" class="promo-nav-item p-3 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-lg font-semibold text-white">₹300 Referral Bonus</span>
+                        <span class="text-yellow-400 text-xl">↓</span>
+                    </a>
+                     <a href="#losing-bonus" class="promo-nav-item p-3 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-lg font-semibold text-white">Losing Bonus</span>
+                        <span class="text-yellow-400 text-xl">↓</span>
+                    </a>
+                     <a href="#free-spins" class="promo-nav-item p-3 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-lg font-semibold text-white">5 Free Spins</span>
+                        <span class="text-yellow-400 text-xl">↓</span>
+                    </a>
+                     <a href="#loyalty-store" class="promo-nav-item p-3 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-lg font-semibold text-white">Loyalty Points Store</span>
+                        <span class="text-yellow-400 text-xl">↓</span>
+                    </a>
+                     <a href="#birthday-bonus" class="promo-nav-item p-3 rounded-lg flex items-center justify-between group" onclick="setActiveTab(this)">
+                        <span class="text-lg font-semibold text-white">Birthday Bonus</span>
+                        <span class="text-yellow-400 text-xl">↓</span>
+                    </a>
+                </nav>
+
+
+                <!-- RIGHT COLUMN: Detailed Sections -->
+                <div class="w-full lg:w-2/3 flex flex-col gap-8">
+
+                    <!-- 1. Welcome Bonus -->
+                    <section id="welcome-bonus" class="promo-detail-card p-8 rounded-xl shadow-2xl">
+                        <div class="text-6xl mb-4 text-yellow-400">🎉</div>
+                        <h2 class="text-3xl font-black mb-4 text-white">100% Welcome Bonus</h2>
+                        <p class="text-red-100 mb-4 text-lg leading-relaxed">
+                            Register, deposit, and click Join Now to enter your amount. Get a 100% bonus up to ₹1,00,000 after verification. 
+                            Wager 25x within 30 days using bonus wallet bets. Deposits are used before bonus funds. Invalid bets or multiple accounts void the offer.
+                        </p>
+                        <ul class="list-disc ml-5 mb-6 text-red-200 space-y-2">
+                            <li><strong>Min Deposit:</strong> ₹500</li>
+                            <li><strong>Wagering Requirement:</strong> 25x</li>
+                            <li><strong>Validity:</strong> 30 Days</li>
+                        </ul>
+                        <a href="https://winstrike.com/" class="inline-block bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 shadow-lg">CLAIM NOW</a>
+                    </section>
+
+                    <!-- 2. Referral Bonus -->
+                    <section id="referral-bonus" class="promo-detail-card p-8 rounded-xl shadow-2xl">
+                        <div class="text-6xl mb-4 text-yellow-400">🤝</div>
+                        <h2 class="text-3xl font-black mb-4 text-white">₹300 Referral Bonus</h2>
+                        <p class="text-red-100 mb-4 text-lg leading-relaxed">
+                            Bring your friends to Winstrike and get rewarded! For every friend that registers using your unique link and deposits a minimum of ₹1,000, you will receive a flat ₹300 bonus instantly.
+                        </p>
+                        <ul class="list-disc ml-5 mb-6 text-red-200 space-y-2">
+                            <li><strong>Your Reward:</strong> ₹300 per friend</li>
+                            <li><strong>Friend's Min Deposit:</strong> ₹1,000</li>
+                            <li><strong>Limit:</strong> Unlimited referrals</li>
+                        </ul>
+                        <a href="https://winstrike.com/" class="inline-block bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 shadow-lg">GET LINK</a>
+                    </section>
+
+                    <!-- 3. Losing Bonus (Cashback) -->
+                    <section id="losing-bonus" class="promo-detail-card p-8 rounded-xl shadow-2xl">
+                        <div class="text-6xl mb-4 text-yellow-400">🛡️</div>
+                        <h2 class="text-3xl font-black mb-4 text-white">Losing Bonus (Cashback)</h2>
+                        <p class="text-red-100 mb-4 text-lg leading-relaxed">
+                            Had a tough week? We've got your back. Get up to 10% of your net losses back as a bonus every Monday. It's our way of giving you a second chance to strike big!
+                        </p>
+                        <ul class="list-disc ml-5 mb-6 text-red-200 space-y-2">
+                            <li><strong>Calculation:</strong> Based on weekly net losses</li>
+                            <li><strong>Payout Day:</strong> Every Monday</li>
+                            <li><strong>Max Cashback:</strong> ₹10,000</li>
+                        </ul>
+                        <a href="https://winstrike.com/" class="inline-block bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 shadow-lg">LEARN MORE</a>
+                    </section>
+
+                    <!-- 4. 5 Free Spins -->
+                    <section id="free-spins" class="promo-detail-card p-8 rounded-xl shadow-2xl">
+                        <div class="text-6xl mb-4 text-yellow-400">🎰</div>
+                        <h2 class="text-3xl font-black mb-4 text-white">5 Free Spins</h2>
+                        <p class="text-red-100 mb-4 text-lg leading-relaxed">
+                            Log in every weekend and deposit at least ₹500 to unlock 5 Free Spins on our featured slot games or Aviator free bets. Spin the reels on the house and keep your winnings!
+                        </p>
+                        <ul class="list-disc ml-5 mb-6 text-red-200 space-y-2">
+                            <li><strong>Availability:</strong> Sat-Sun</li>
+                            <li><strong>Min Deposit:</strong> ₹500</li>
+                            <li><strong>Wagering:</strong> 0x (Cash winnings)</li>
+                        </ul>
+                        <a href="https://winstrike.com/" class="inline-block bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 shadow-lg">CLAIM SPINS</a>
+                    </section>
+
+                    <!-- 5. Loyalty Points Store -->
+                    <section id="loyalty-store" class="promo-detail-card p-8 rounded-xl shadow-2xl">
+                        <div class="text-6xl mb-4 text-yellow-400">💎</div>
+                        <h2 class="text-3xl font-black mb-4 text-white">Loyalty Points Store</h2>
+                        <p class="text-red-100 mb-4 text-lg leading-relaxed">
+                            Every bet counts! Earn loyalty points for every ₹100 wagered on sports or casino. Accumulate points and exchange them in our store for real cash, electronics, or exclusive merchandise.
+                        </p>
+                        <ul class="list-disc ml-5 mb-6 text-red-200 space-y-2">
+                            <li><strong>Earn Rate:</strong> 1 Point per ₹100 bet</li>
+                            <li><strong>Exchange:</strong> Cash, Gadgets, Bonuses</li>
+                            <li><strong>Status:</strong> Higher tiers earn faster</li>
+                        </ul>
+                        <a href="https://winstrike.com/" class="inline-block bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 shadow-lg">VISIT STORE</a>
+                    </section>
+
+                    <!-- 6. Birthday Bonus -->
+                    <section id="birthday-bonus" class="promo-detail-card p-8 rounded-xl shadow-2xl">
+                        <div class="text-6xl mb-4 text-yellow-400">🎂</div>
+                        <h2 class="text-3xl font-black mb-4 text-white">Birthday Bonus</h2>
+                        <p class="text-red-100 mb-4 text-lg leading-relaxed">
+                            Happy Birthday! To celebrate your special day, active players receive a special personalized bonus gift. Check your email or notification center on your birthday for a surprise.
+                        </p>
+                        <ul class="list-disc ml-5 mb-6 text-red-200 space-y-2">
+                            <li><strong>Eligibility:</strong> Verified account & active history</li>
+                            <li><strong>Reward:</strong> Surprise Bonus / Free Bet</li>
+                            <li><strong>Claim:</strong> Valid for 7 days from birthday</li>
+                        </ul>
+                        <a href="https://winstrike.com/" class="inline-block bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 shadow-lg">CONTACT SUPPORT</a>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="header-bg text-white py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
+            &copy; 2025 Winstrike. All rights reserved. Play Responsibly.
+        </div>
+    </footer>
+
+    <script>
+        // Set the active class on the currently visible section's tab
+        function setActiveTab(clickedElement) {
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('#promo-nav .promo-nav-item');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to the clicked tab
+            clickedElement.classList.add('active');
+
+            // Handle smooth scroll if needed (though scroll-behavior: smooth in CSS handles most of it)
+            const targetId = clickedElement.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize active state on load for the first tab
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstTab = document.querySelector('#promo-nav .promo-nav-item');
+            if (firstTab) {
+                firstTab.classList.add('active');
+            }
+        });
+
+        // Optional: Observe the sections to update the active tab automatically on scroll
+        const sections = document.querySelectorAll('.promo-detail-card');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50% 0px', // When the section crosses the halfway point of the viewport
+            threshold: 0
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targetId = `#${entry.target.id}`;
+                    const targetTab = document.querySelector(`#promo-nav a[href="${targetId}"]`);
+                    
+                    if (targetTab) {
+                         // Remove active class from all tabs
+                        const tabs = document.querySelectorAll('.promo-nav-item');
+                        tabs.forEach(tab => tab.classList.remove('active'));
+                        
+                        // Add active class to the current intersecting tab
+                        targetTab.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+    </script>
+</body>
+</html>
