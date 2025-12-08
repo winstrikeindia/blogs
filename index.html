@@ -132,6 +132,87 @@
             color: #ffffff;
             border: 1px solid #4b5563;
         }
+        /* --- SPINNING WHEEL CSS (UPDATED FOR SIZE) --- */
+        .wheel-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 200px; /* Maintained 200px */
+            height: 200px; /* Maintained 200px */
+            border-radius: 50%;
+            border: 4px solid #FBBF24; /* Yellow border */
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); /* Yellow glow */
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                #751414 0deg 90deg,   /* Maroon: 5 WINS */
+                #3b82f6 90deg 180deg, /* Blue: TRY AGAIN */
+                #10b981 180deg 270deg,/* Green: SORRY */
+                #f59e0b 270deg 360deg /* Amber: 100% REDEPOSIT */
+            );
+            transition: transform 7s cubic-bezier(0.1, 0, 0, 1); /* 7s spin with easing */
+        }
+
+        /* Sector Labels */
+        .sector-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 0;
+            font-weight: 800;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            width: 50%;
+            text-align: center;
+            padding-left: 15px;
+            font-size: 0.8rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* Positioning text in center of wedges (0deg is at the 3 o'clock position in CSS) */
+        .text-1 { transform: rotate(45deg) translate(10px, -50%); }   
+        .text-2 { transform: rotate(135deg) translate(10px, -50%); }  
+        .text-3 { transform: rotate(225deg) translate(10px, -50%); }  
+        .text-4 { transform: rotate(315deg) translate(10px, -50%); }  
+
+        /* The Pointer Arrow */
+        .arrow {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 25px solid #FBBF24; /* Yellow Arrow */
+            z-index: 10;
+        }
+
+        .center-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: #1a202c; /* Modal BG color */
+            border-radius: 50%;
+            border: 4px solid #FBBF24;
+            z-index: 5;
+        }
     </style>
     <script type="application/ld+json">
 {
@@ -215,8 +296,101 @@
 }
 </script>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen" onload="triggerModal()">
+ <!-- MODAL STRUCTURE (Hidden by default) -->
+    <div id="form-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 modal-overlay" onclick="closeModal()">
+        <!-- Modal Content is now WIDER (max-w-xl) -->
+        <div class="modal-content w-full max-w-xl rounded-xl shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="bg-red-800 p-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold text-white">Spin & Get Exclusive Access</h2>
+                <button onclick="closeModal()" class="text-white hover:text-yellow-400 text-2xl font-bold transition-colors">&times;</button>
+            </div>
+            
+            <!-- Modal Body (Compact Vertical Padding: p-4) -->
+            <div class="p-4">
+                <div id="form-messages" class="text-center mb-4 hidden text-sm"></div>
 
+                <p class="text-gray-400 mb-6 text-center">Spin the wheel to unlock your sign-up bonus!</p>
+                
+                <!-- Form structure remains tight using space-y-4 -->
+                <form id="lead-form" action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <!-- Hidden fields for submission -->
+                    <input type="hidden" name="access_key" value="c06854e4-7631-4c84-9515-d1d0c27bd0bf">
+                    <input type="hidden" name="redirect" value="https://winstrikeindia.github.io/blogs/registration.html">
+                    <input type="hidden" name="subject" value="Winstrike Pop-up Lead">
+                    
+                    <!-- TWO-COLUMN LAYOUT FOR INPUTS AND WHEEL -->
+                    <!-- Stacks vertically on mobile, horizontally on md/desktop -->
+                    <div class="flex flex-col md:flex-row gap-6">
+
+                        <!-- LEFT COLUMN: INPUT FIELDS (Takes 1/2 width on md+) -->
+                        <div class="w-full md:w-1/2 space-y-4">
+                            <!-- Form Input 1 -->
+                            <div>
+                                <label for="modal-name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+                                <input type="text" id="modal-name" name="name" required placeholder="John Doe" class="modal-input">
+                            </div>
+
+                            <!-- Form Input 2 -->
+                            <div>
+                                <label for="modal-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                <input type="email" id="modal-email" name="email" required placeholder="email@example.com" class="modal-input">
+                            </div>
+                            
+                            <!-- Form Input 3 -->
+                            <div>
+                                <label for="modal-phone" class="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
+                                <input type="tel" id="modal-phone" name="phone" required placeholder="+91 98765 43210" class="modal-input">
+                            </div>
+                        </div>
+
+                        <!-- RIGHT COLUMN: WHEEL & SPIN BUTTON (Takes 1/2 width on md+) -->
+                        <div class="w-full md:w-1/2 flex flex-col items-center justify-center space-y-4">
+                            <!-- WHEEL SECTION -->
+                            <div class="wheel-wrapper mt-4 mb-2">
+                                <div class="arrow"></div>
+                                <div class="wheel-container">
+                                    <div class="wheel" id="spin-wheel">
+                                        <span class="sector-text text-1">5 WINS</span>
+                                        <span class="sector-text text-2">TRY AGAIN</span>
+                                        <span class="sector-text text-3">SORRY</span>
+                                        <span class="sector-text text-4">100%<br>REDEPOSIT!</span>
+                                    </div>
+                                    <div class="center-dot"></div>
+                                </div>
+                            </div>
+
+                            <!-- SPIN BUTTON -->
+                            <button type="button" id="spin-btn" onclick="startSpin()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-xl transform transition active:scale-95 text-lg">
+                                SPIN TO REVEAL OFFER
+                            </button>
+                        </div>
+                    </div>
+                    <!-- END TWO-COLUMN LAYOUT -->
+                    
+                    <!-- Result Message Area (Full Width) -->
+                    <div id="resultContainer" class="text-center p-3 bg-gray-700 rounded-xl border border-yellow-500 hidden mt-4">
+                        <p class="text-sm font-bold text-gray-400 uppercase">Your Exclusive Prize:</p>
+                        <div id="wheel-message" class="text-xl font-black text-yellow-500 mt-1"></div>
+                    </div>
+
+                    <!-- Hidden Input for Prize (Full Width) -->
+                    <input type="hidden" id="prizeInput" name="prize" value="Not Spun">
+                    
+                    <!-- Submit button disabled until spin is complete (Full Width) -->
+                    <button type="submit" id="submit-btn" disabled class="w-full bg-yellow-500 text-gray-900 font-bold py-2 rounded-lg shadow-lg text-lg transition duration-300 opacity-50 cursor-not-allowed mt-4">
+                        CLAIM PRIZE & GET INSTANT ACCESS
+                    </button>
+                    
+                    <p class="text-xs text-gray-500 text-center mt-2">
+                        By submitting, you agree to receive communications from Winstrike.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- 1. Header (Custom Black bar across the top) -->
     <header class="header-bg border-b border-gray-800 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
@@ -588,6 +762,198 @@
             </div>
         </div>
     </footer>
+     <script>
+        // JS functions for the Pop-up Modal
+        function openModal() {
+            document.getElementById('form-modal').classList.remove('hidden');
+            document.getElementById('form-modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('form-modal').classList.add('hidden');
+            document.getElementById('form-modal').classList.remove('flex');
+        }
+
+        // AUTO-TRIGGER MODAL FUNCTIONALITY (5-second delay)
+        function triggerModal() {
+            // Check if the modal has been seen in this session before
+            if (localStorage.getItem('winstrike_modal_seen') === 'true') {
+                console.log('Modal already seen in this session. Skipping auto-trigger.');
+                return;
+            }
+            
+            setTimeout(openModal, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+        /* --- WHEEL OF FORTUNE JS (UPDATED) --- */
+        let isSpinning = false;
+
+        function startSpin() {
+            if (isSpinning) return;
+            isSpinning = true;
+            
+            // Set localStorage flag immediately upon spinning to prevent repeat appearance
+            localStorage.setItem('winstrike_modal_seen', 'true');
+            
+            const wheel = document.getElementById('spin-wheel');
+            const spinBtn = document.getElementById('spin-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const resultContainer = document.getElementById('resultContainer');
+            const wheelMessage = document.getElementById('wheel-message');
+            
+            spinBtn.disabled = true;
+            spinBtn.textContent = "Spinning...";
+            spinBtn.classList.add('opacity-50');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            resultContainer.classList.add('hidden');
+
+            const degreesPerSegment = 90; // 4 segments of 90 degrees
+            
+            // Determine a random winning segment (1-4, corresponding to text-1, text-2, etc.)
+            const winningSegmentIndex = Math.floor(Math.random() * 4); // 0, 1, 2, or 3
+            
+            // Calculate the required final angle
+            // 5 full spins (1800 degrees) + degrees needed to land on the center of the winning segment
+            const revolutions = 5;
+            
+            // The wheel starts at 0deg (right edge). Segment 1 is 0-90.
+            // Angle to center the winning segment under the marker (marker is at the top/center, which is 270 degrees on the CSS circle)
+            // We need to rotate the wheel until the center of the winning segment is at the 270-degree position.
+            
+            // 90deg offset adjustment for segment centers (0=45, 1=135, 2=225, 3=315)
+            // Since the arrow is at the top (-90 degrees relative to 3 o'clock), we adjust the angle to point 90 degrees away from the center of the target segment.
+            
+            // Target Angle to land the center of segment 0 (5 WINS) at the arrow:
+            // The center of segment 0 is at 45 degrees. We want it at the 270 degree point (top).
+            // Rotation needed: 270 - 45 = 225 degrees. (If segments are 0-90, 90-180, 180-270, 270-360)
+
+            // Segments map (clockwise from right edge 0 deg):
+            // Index 0 (0-90): 5 WINS (Center 45 deg)
+            // Index 1 (90-180): TRY AGAIN (Center 135 deg)
+            // Index 2 (180-270): SORRY (Center 225 deg)
+            // Index 3 (270-360): 100% REDEPOSIT! (Center 315 deg)
+
+            // Rotation = 360 - Target Center Angle + 90 (to put the center under the arrow at the top)
+            const segmentCenters = [45, 135, 225, 315];
+            const targetCenterAngle = segmentCenters[winningSegmentIndex];
+            
+            // Rotation needed to bring the target center angle to the 270-degree position (Top Arrow)
+            let rotationToTarget = 270 - targetCenterAngle;
+            if (rotationToTarget < 0) {
+                rotationToTarget += 360;
+            }
+
+            // Add a random slight offset to avoid landing exactly on the line
+            const offset = Math.random() * (degreesPerSegment - 10) - (degreesPerSegment / 2) + 5; // e.g., random angle from -40 to 40
+            
+            const totalDegrees = 360 * revolutions + rotationToTarget + offset;
+
+            wheel.style.transition = 'transform 7s cubic-bezier(0.1, 0, 0, 1)';
+            wheel.style.transform = `rotate(${totalDegrees}deg)`;
+
+
+            // Announce the result after the spinning animation completes
+            setTimeout(() => {
+                isSpinning = false;
+                
+                const segments = [
+                    '5 WINS', 'TRY AGAIN', 'SORRY', '100% REDEPOSIT!'
+                ];
+                const prize = segments[winningSegmentIndex];
+                
+                // Set the result message and appearance
+                wheelMessage.textContent = prize;
+                document.getElementById('prizeInput').value = prize;
+
+                resultContainer.classList.remove('hidden');
+                
+                // Enable Submit Button and update prize color
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                
+                if (prize === "SORRY" || prize === "TRY AGAIN") {
+                    wheelMessage.classList.remove("text-green-500", "text-yellow-500");
+                    wheelMessage.classList.add("text-red-500");
+                    submitBtn.classList.add('bg-red-500', 'hover:bg-red-600');
+                    submitBtn.classList.remove('bg-yellow-500', 'hover:bg-yellow-400');
+                    submitBtn.textContent = `Submit Form (Prize: ${prize})`;
+                } else {
+                    wheelMessage.classList.remove("text-red-500", "text-yellow-500");
+                    wheelMessage.classList.add("text-green-500");
+                    submitBtn.classList.add('bg-yellow-500', 'hover:bg-yellow-400');
+                    submitBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+                    submitBtn.textContent = `CLAIM PRIZE & GET INSTANT ACCESS (${prize}!)`;
+                }
+
+                spinBtn.textContent = "Spin Again?";
+                spinBtn.disabled = false;
+                spinBtn.classList.remove('opacity-50');
+
+            }, 7000); // Must match CSS transition time (7 seconds)
+        }
+        
+        // --- FORM SUBMISSION HANDLER ---
+        document.getElementById('lead-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const endpoint = form.action;
+            const submitBtn = document.getElementById('submit-btn');
+            const messages = document.getElementById('form-messages');
+            
+            // Check if spin has occurred (optional validation)
+            if (document.getElementById('prizeInput').value === 'Not Spun') {
+                messages.classList.add('text-red-400');
+                messages.textContent = 'Please spin the wheel first to unlock your offer!';
+                messages.classList.remove('hidden');
+                return;
+            }
+            
+            // Collect form data manually for fetch body
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            messages.classList.remove('text-green-400', 'text-red-400', 'hidden');
+            messages.innerHTML = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                // Fetch request for Web3Forms (sends JSON body)
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok || result.success) {
+                    messages.classList.add('text-green-400');
+                    messages.innerHTML = 'Success! Redirecting you now...';
+                    form.reset(); 
+                    
+                    // Delay and redirect after success message
+                    setTimeout(() => {
+                        window.location.href = 'https://winstrike.com/'; 
+                    }, 2000); 
+
+                } else {
+                    messages.classList.add('text-red-400');
+                    messages.innerHTML = result.message || 'Submission failed. Please check your key.';
+                }
+            } catch (error) {
+                messages.classList.add('text-red-400');
+                messages.innerHTML = 'Network error. Please try again later.';
+            } finally {
+                messages.classList.remove('hidden');
+                submitBtn.disabled = false;
+            }
+        });
+        
+    </script>
 
 </body>
 </html>
