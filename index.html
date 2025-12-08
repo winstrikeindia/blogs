@@ -17,11 +17,21 @@
     <!-- Google Site Verification for GSC (New) --><meta name="google-site-verification" content="tSSkaBBudgdT1TuNuTaLiT0GjAMFCGxI_LdTNU7m--8" />
     <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
     <!-- Font for striking headlines --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
+   <style>
+    body {
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll due to padding/margin issues */
         }
-         /* --- MARQUEE SPECIFIC CSS (FIXED) --- */
+        /* --- CORE STYLES (ADDED MISSING MODAL DEFINITIONS) --- */
+        .hero-bg { background-color: #751414; /* Deep Maroon/Crimson */ }
+        .header-bg { background-color: #111111; }
+        .modal-overlay { background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); }
+        /* FIX: Ensure modal content has a solid background color */
+        .modal-content { background-color: #1a202c; border: 2px solid #FBBF24; } 
+        /* MODIFIED: Increased padding/text size, added inner shadow, and stronger yellow focus ring */
+        .modal-input { @apply w-full py-3.5 px-4 rounded-lg text-xl bg-gray-800 text-white border border-gray-600 shadow-inner focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:border-yellow-400 transition duration-200; }
+        
+        /* --- MARQUEE SPECIFIC CSS (FIXED) --- */
         .marquee-container {
             /* Main outer container, dark background */
             background-color: #1a202c; 
@@ -68,7 +78,7 @@
             }
             100% {
                 /* This scroll distance should be adjusted based on content width for a perfect loop, 
-                   but 100% is often sufficient for infinite scroll effect */
+                    but 100% is often sufficient for infinite scroll effect */
                 transform: translateX(-50%); 
             }
         }
