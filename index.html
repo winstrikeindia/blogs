@@ -166,7 +166,7 @@
             height: 100%;
             border-radius: 50%;
             background: conic-gradient(
-                #751414 0deg 90deg,   /* Maroon: 5 WINS */
+                #751414 0deg 90deg,   /* Maroon: 5 SPINS */
                 #3b82f6 90deg 180deg, /* Blue: TRY AGAIN */
                 #10b981 180deg 270deg,/* Green: SORRY */
                 #f59e0b 270deg 360deg /* Amber: 100% REDEPOSIT */
@@ -363,7 +363,7 @@
                                 <div class="arrow"></div>
                                 <div class="wheel-container">
                                     <div class="wheel" id="spin-wheel">
-                                        <span class="sector-text text-1">5 WINS</span>
+                                        <span class="sector-text text-1">5 SPINS</span>
                                         <span class="sector-text text-2">TRY AGAIN</span>
                                         <span class="sector-text text-3">SORRY</span>
                                         <span class="sector-text text-4">100%<br>REDEPOSIT!</span>
@@ -834,12 +834,12 @@
             // 90deg offset adjustment for segment centers (0=45, 1=135, 2=225, 3=315)
             // Since the arrow is at the top (-90 degrees relative to 3 o'clock), we adjust the angle to point 90 degrees away from the center of the target segment.
             
-            // Target Angle to land the center of segment 0 (5 WINS) at the arrow:
+            // Target Angle to land the center of segment 0 (5 SPINS) at the arrow:
             // The center of segment 0 is at 45 degrees. We want it at the 270 degree point (top).
             // Rotation needed: 270 - 45 = 225 degrees. (If segments are 0-90, 90-180, 180-270, 270-360)
 
             // Segments map (clockwise from right edge 0 deg):
-            // Index 0 (0-90): 5 WINS (Center 45 deg)
+            // Index 0 (0-90): 5 SPINS (Center 45 deg)
             // Index 1 (90-180): TRY AGAIN (Center 135 deg)
             // Index 2 (180-270): SORRY (Center 225 deg)
             // Index 3 (270-360): 100% REDEPOSIT! (Center 315 deg)
@@ -868,7 +868,7 @@
                 isSpinning = false;
                 
                 const segments = [
-                    '5 WINS', 'TRY AGAIN', 'SORRY', '100% REDEPOSIT!'
+                    '5 SPINS', 'TRY AGAIN', 'SORRY', '100% REDEPOSIT!'
                 ];
                 const prize = segments[winningSegmentIndex];
                 
