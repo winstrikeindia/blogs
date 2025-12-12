@@ -16,9 +16,10 @@
         .main-content-bg { background-color: #751414; /* Deep Maroon/Crimson */ }
         .feature-card { background-color: #991B1B; /* Red-800 */ }
         
-        /* UPDATED: Reduced button width constraint from w-20 (80px) to w-16 (64px) */
+        /* UPDATED: Removed w-full and used w-[100px] to strictly enforce the small size globally */
         .download-btn { 
-            @apply p-0 m-0 rounded-full shadow-none inline-block max-w-xs w-16 hover:scale-105 transition duration-300 transform;
+            /* Enforce 100px width globally to prevent stretching on mobile */
+            @apply p-0 m-0 rounded-full shadow-none inline-block w-[100px] hover:scale-105 transition duration-300 transform;
             background-color: transparent !important;
             box-shadow: none !important;
         }
@@ -97,55 +98,13 @@
         </div>
     </header>
 
-    <!-- Marquee Section (FIXED MARQUEE HTML STRUCTURE) -->
-    <section class="marquee-container">
-        <div class="recent-tag">RECENT WINNERS</div>
-        <div class="marquee-scroll-area">
-            <!-- New wrapper to correctly enforce horizontal content width -->
-            <div class="winner-content-wrapper">
-                <span class="winner-item">🏆 ₹210 Gokul C.</span>
-                <span class="winner-item">🏆 ₹5650 Tarak S.</span>
-                <span class="winner-item">🏆 ₹909 Reddy S.</span>
-                <span class="winner-item">🏆 ₹8900 Shubhangi B.</span>
-                <span class="winner-item">🏆 ₹591 Sasi K.</span>
-                <span class="winner-item">🏆 ₹9000 Akshitha R.</span>
-                <span class="winner-item">🏆 ₹1042 Thomas H.</span>
-                <span class="winner-item">🏆 ₹410 Abhi D.</span>
-                <span class="winner-item">🏆 ₹1200 Ravi M.</span>
-                <span class="winner-item">🏆 ₹335 Priya G.</span>
-                <!-- DUPLICATION START -->
-                <span class="winner-item">🏆 ₹1210 Ram N.</span>
-                <span class="winner-item">🏆 ₹565 Aki .</span>
-                <span class="winner-item">🏆 ₹11909 Rushali S.</span>
-                <span class="winner-item">🏆 ₹89 Kamal B.</span>
-                <span class="winner-item">🏆 ₹591 Afreen M.</span>
-                <span class="winner-item">🏆 ₹1005 Jyotish R.</span>
-                <span class="winner-item">🏆 ₹3042 Anand H.</span>
-                <span class="winner-item">🏆 ₹4110 Selva D.</span>
-                <span class="winner-item">🏆 ₹1200 Siddu M.</span>
-                <span class="winner-item">🏆 ₹22335 Sadik G.</span>
-                <span class="winner-item">🏆 ₹210 Gokul C.</span>
-                <span class="winner-item">🏆 ₹5650 Tarak S.</span>
-                <span class="winner-item">🏆 ₹909 Reddy S.</span>
-                <span class="winner-item">🏆 ₹8900 Shubhangi B.</span>
-                <span class="winner-item">🏆 ₹591 Sasi K.</span>
-                <span class="winner-item">🏆 ₹9000 Akshitha R.</span>
-                <span class="winner-item">🏆 ₹1042 Thomas H.</span>
-                <span class="winner-item">🏆 ₹410 Abhi D.</span>
-                <span class="winner-item">🏆 ₹1200 Ravi M.</span>
-                <span class="winner-item">🏆 ₹335 Priya G.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. Hero Download Section -->
     <main class="flex-grow main-content-bg text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="flex flex-col lg:flex-row items-center lg:gap-16">
                 
-                <!-- Left Side: Text and CTA -->
-                <div class="w-full lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0">
+                <!-- Left Side: Text and CTA (Shrunk to 40% on large screens) -->
+                <div class="w-full lg:w-2/5 text-center lg:text-left mb-10 lg:mb-0">
                     <span class="text-xl font-bold text-yellow-400 uppercase tracking-widest block mb-3">Next-Gen Gaming is Here</span>
                     <h1 class="text-5xl md:text-6xl font-black mb-4 leading-tight">
                         Download the <span class="text-yellow-400">Winstrike App</span> <br> and Play Anywhere
@@ -158,7 +117,7 @@
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
                         <!-- Primary Download Button: Uses image as content -->
                         <a href="YOUR_ANDROID_DOWNLOAD_LINK" class="download-btn">
-                            <img src="https://i.ibb.co/PZTYbRkc/Group-1686576652.png" 
+                            <img src="https://i.ibb.co/YTbLy5LC/Group-1686576654-1.png" 
                                  alt="Download Winstrike App" 
                                  class="w-full h-auto">
                         </a>
@@ -166,12 +125,12 @@
                     <p class="text-sm text-red-300 mt-4">Safe & Secure: Automatic download starts upon clicking.</p>
                 </div>
                 
-                <!-- Right Side: Promotional Image -->
-                <div class="w-full lg:w-1/2 flex justify-center relative">
-                    <!-- REDUCED IMAGE SIZE: w-9/12 instead of w-11/12 -->
+                <!-- Right Side: Promotional Image (Expanded to 60% on large screens, filling its space) -->
+                <div class="w-full lg:w-3/5 flex justify-center relative">
+                    <!-- FIX: Set image width to w-full to remove all internal gaps -->
                     <img src="https://i.ibb.co/Z6jySVP5/iphone-notchless-12-1.png" 
                          alt="Winstrike App Live Matches Screenshot" 
-                         class="w-9/12 h-auto object-cover">
+                         class="w-full h-auto object-cover">
                 </div>
 
             </div>
@@ -203,6 +162,7 @@
                     <span class="app-icon">🎁</span>
                     <h3 class="text-2xl font-bold mb-2">Mobile-Only Bonuses</h3>
                     <p class="text-red-200">Access exclusive app-only bonuses, daily free bets, and push notification alerts for limited-time offers you can't get anywhere else.</p>
+                </p>
                 </div>
 
                 <div class="feature-card p-6 rounded-xl shadow-xl border-t-4 border-yellow-400">
@@ -234,7 +194,7 @@
         <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <!-- Primary Download Button: Uses image as content -->
             <a href="YOUR_ANDROID_DOWNLOAD_LINK" class="download-btn">
-                <img src="https://i.ibb.co/PZTYbRkc/Group-1686576652.png" 
+                <img src="https://i.ibb.co/YTbLy5LC/Group-1686576654-1.png" 
                      alt="Download Winstrike App" 
                      class="w-full h-auto">
             </a>
